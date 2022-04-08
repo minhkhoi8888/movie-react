@@ -1,0 +1,47 @@
+@use "../../scss" as *;
+
+.btn{
+    cursor: pointer;
+    position: relative;
+    border: 2px solid transparent;
+    background-color: $main-color;
+    color: $white;
+    border-radius: $border-radius;
+    height: 45px;
+    // min-width: 120px;
+    padding: 0 6px;
+    box-shadow: 0 0 8px 4px $bg-color;
+    font-size: 18px;
+    transition: all 0.2s ease-in;
+    @include flex(center, center);
+    
+
+    &:hover{
+        border-color: $white;
+    }
+
+    &.small{
+        height: 25px;
+        color: $white;
+        border-color: $white;
+        background-color: $bg-color;
+        &:hover{
+            color: $main-color;
+            border-color: $main-color;
+        }
+    }
+
+    &.circle{
+        font-size: 22px;
+        font-weight: 800;
+        color: $main-color;
+        background-color: $white;
+        width: 45px;
+        height: 45px;
+        border-radius: 30px;
+        &:hover{
+            border-color: $main-color;
+        }
+    }
+}
+

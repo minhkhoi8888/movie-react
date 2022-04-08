@@ -1,0 +1,19 @@
+@use "../scss/" as *;
+
+.layerContent{
+    margin-top: -15vh;
+    position: relative;
+    z-index: 2;
+    @include mobile{
+        margin-top: 0; 
+    }
+}
+
+.circle-load{
+    width: 35px !important;
+    height: 35px !important;
+    background-color: $bg-color !important;
+    border-color: $white;
+    color: $white !important;
+    font-size: 18px !important;
+} 

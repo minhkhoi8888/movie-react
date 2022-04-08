@@ -1,0 +1,16 @@
+@use "../../scss/" as *;
+
+.movie-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    @include mobile{
+    grid-template-columns: auto auto;
+
+    }
+
+    &__page{
+        margin-top: 4rem;
+        @include flex(center, center);
+    }
+}

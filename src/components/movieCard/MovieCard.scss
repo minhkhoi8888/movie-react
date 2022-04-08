@@ -1,0 +1,60 @@
+@use "../../scss" as *;
+
+.movie-card{
+    box-sizing: border-box;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-top: 150%;
+    border-radius: $border-radius;
+    transition: all 0.5s;
+    border: 2px solid #334756;
+    
+    &:hover{
+        background-size: right bottom;
+    }
+    .title{
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        border-radius: $border-radius;
+        @include mobile{
+            padding: 10px 6px;
+
+        }
+        p{
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+            margin: 2px 0;
+        }
+
+        &__tag{
+            @include flex(flex-start, center);
+            
+            .imdb{
+                padding: 2px 8px;
+                background-color: rgb(255, 174, 0);
+                color: $black;
+                border-radius: $border-radius;
+                font-size: 12px;
+            }
+            .release-date{
+                margin-left: 4px;
+                padding: 2px 8px;
+                background-color: rgb(226, 108, 108);
+                color: $black;
+                border-radius: $border-radius;
+                font-size: 12px;
+            }
+        }
+    }
+}

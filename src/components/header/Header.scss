@@ -1,0 +1,287 @@
+@use "../../scss" as *;
+
+.logo {
+    @include flex(center, center);
+    img{
+        width: 120px;
+        margin-right: 24px;
+        margin-top: 10px;
+
+        @include mobile{
+            width: 80px;
+            margin-right: 0;
+        }
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $header-height;
+    z-index: 99;
+    transition: all 0.3s ease;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(255,255,255,0));
+    
+    .openNav{
+        display: none;
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        @include mobile{
+            display: block;
+        }
+        @include tablet{
+            display: block;
+        }
+    }
+
+    &.shink{
+        height: $header-height;
+        background-color: $black;
+        @include mobile{
+            height: 6rem;
+        }
+    }
+
+    &__wrap{
+        height: 100%;
+        @include flex(flex-start, center);
+    }
+    
+
+    &__nav{
+        position: relative;
+        @include flex(space-between, center);
+        flex-grow: 1;
+        & > * ~ * {
+            margin-left: 2rem;
+        }
+        &__btn-cirle{
+            padding: 0 12px !important;
+            height: 2.5rem !important;
+            background-color: rgba(#2b2b2b, 0.5) !important;
+            box-shadow: none !important;
+            
+        }
+
+        &__right{
+            @include flex(center, center);
+            @include tablet {
+                flex-direction: column;
+            }
+            & > * ~ * {
+                margin-left: 1.5rem;
+                @include tablet {
+                    margin-top: 2rem;
+                }
+            }
+            .header__nav__input{
+                border-radius: $border-radius;
+                position: relative;
+                overflow: hidden;
+                @include flex(center, center);
+                @include mobile{
+                    width: 90%;
+                    .select-type,
+                    button,
+                    input{
+                        height: 4.5rem!important;
+                    }
+                }
+        
+                &__contain{
+                    position: relative;
+                    left: 100%;
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    @include tablet {
+                        opacity: 1;
+                        left:0;
+                        @include flex(center, center);
+                    }
+
+                    &--active{
+                        opacity: 1;
+                        left:0;
+                    }
+
+                    .select-type{
+                        padding: 0 4px;
+                        outline: none;
+                        height: 2.5rem;
+                        border-color: transparent rgb(88, 83, 83) transparent transparent ;
+                        border-width: 1px;
+                        background-color: rgba(255,255,255, 0.2);
+                        border-radius: 6px 0 0 6px;
+                        color: $white;
+                        option{
+                            background-color: #2B2B2B;
+                            color: #EEEEEE;
+                        }
+                        font-size: 16px;
+                    }
+                    
+                    input{
+                        padding: 0 18px;
+                        outline: none;
+                        border: none;
+                        height: 2.5rem;
+                        background-color: rgba(255,255,255, 0.2);
+                        color: #fff;
+                        font-size: 16px;
+                        &::placeholder{
+                            color: #fff;
+                            opacity: 0.8;
+                        }
+                        @include mobile{
+                            border-color: transparent transparent transparent rgb(88, 83, 83);
+                            border-width: 1px;
+                            border-radius: 0 6px 6px 0;
+                        }
+                    }
+                
+                }
+
+                .toggle-input{
+                    padding: 2px 16px;
+                    color: #fff;
+                    font-size: 16px;
+                    transition: all 0.5s ease;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: rgba(255,255,255, 0.5);
+                    }
+                    @include mobile{
+                        display: none;
+                    }
+                    @include tablet{
+                        display: none;
+                    }
+                }
+            }
+            .header_nav__noti,
+            .header_nav__login{
+                height: 2.5rem;
+                @include tablet{
+                    padding: 1.5rem 2rem !important;
+                }
+            }
+            
+        }
+        
+        &__left{
+            @include tablet {
+                @include flex(flex-start, center);
+                font-size: 14px;
+                flex-direction: column;
+            }
+            @include mobile{
+                height: 100%;
+                @include flex(center, center);
+                flex-direction: column;
+            }
+            span{
+                padding: 6px 4px;
+                margin: 0 12px;
+                cursor: pointer;
+                font-weight: 500;
+                font-size: 18px;
+                position: relative;
+                font-weight: 500;
+                text-shadow: 4px 4px 4px #000;
+                text-transform: uppercase;
+                line-height: 2rem;
+                @include mobile{
+                    display: block;
+                    margin: 3rem 0;
+                    padding: 1rem 0;
+                }
+                @include tablet{
+                    display: block;
+                    margin: 1rem 0;
+                    padding: 1rem 0;
+                }
+    
+                &::before{
+                    content: "";
+                    position: absolute;
+                    background-color: $main-color;
+                    bottom: 0;
+                    height: 2px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: width 0.3s ease;
+                    width: 0;
+                }
+    
+                &.active::before,
+                &:hover::before{
+                    width: 100%;
+                }
+            }
+        }
+
+        .closeNav{
+            position: relative;
+            top: 3rem;
+            text-align: center;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            display: none;
+            cursor: pointer;
+        
+            @include mobile{
+                display: block;
+            }
+            @include tablet{
+                display: block;
+                left:0;
+                transform: translateX(0);
+                margin-bottom: 2rem;
+            }
+        }
+        @include mobile{
+            position: fixed;
+            overflow-x: hidden;
+            z-index: 99999;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 0;
+            background-color: $bg-color;
+            box-shadow: $box-shadow;
+            transition: width 0.5s;
+
+            @include flex(center, center);
+            flex-direction: column;
+
+            & > * ~ * {
+                margin-left: 0;
+            }
+        }
+        @include tablet{
+            position: fixed;
+            overflow-x: hidden;
+            z-index: 99999;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 0;
+            background-color: $bg-color;
+            box-shadow: $box-shadow;
+            transition: width 0.5s;
+
+            @include flex(center, center);
+            flex-direction: column;
+
+            & > * ~ * {
+                margin-left: 0;
+            }
+        }
+    }
+}

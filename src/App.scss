@@ -1,0 +1,115 @@
+@use "./scss/" as *;
+// @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap');
+* {
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box;
+    /* width */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: $black; 
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: $main-color; 
+        border-radius: 4px;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
+}
+
+html {
+    font-size: 100%;
+
+    @include tablet {
+        font-size: 80%;
+    }
+    
+    @include mobile {
+        font-size: 60%;
+    }
+}
+
+body {
+    // font-family: $font-family;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+
+    background-color: $bg-color;
+    color: $txt-color;
+
+    @include mobile {
+        margin-bottom: 3rem;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+@media (hover: hover){
+    a:hover {
+        color: $main-color;
+    }
+}
+
+ul{
+    list-style-type: none;
+}
+
+button, input{
+    outline: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+iframe{
+    border: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.mb-4{
+    margin-bottom: 4rem;
+}
+
+.mb-3{
+    margin-bottom: 3rem;
+}
+
+.mb-2{
+    margin-bottom: 2rem;
+}
+
+.mb-1{
+    margin-bottom: 1rem;
+}
+
+.section{
+    padding: 0 2rem;
+}
+
+.section-header{
+    @include flex(space-between, center);
+}
+
+.App{
+    color: red;
+    @include flex (center, center);
+}
