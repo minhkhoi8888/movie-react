@@ -204,9 +204,9 @@ const Player = (props)=>{
 
     let source;
     if (props.category === "tv"){
-        source = `https://www.2embed.ru/embed/imdb/tv?id=${id}&s=1&e=1`;
+        source = `https://www.2embed.org/embed/imdb/tv?id=${id}&s=1&e=1`;
     } else {
-        source = `https://www.2embed.ru/embed/imdb/movie?id=${props.id.imdb_id}`;
+        source = `https://www.2embed.org/embed/imdb/movie?id=${props.id.imdb_id}`;
     }
     return(
         <div className="player container">
