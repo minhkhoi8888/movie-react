@@ -5,6 +5,23 @@ import {Link, useLocation, useNavigate } from "react-router-dom";
 import "./Header.scss";
 import Logo from "../../asset/logo2.png";
 import Button from "../button/Button";
+import ModalName from "../modal/ModalName";
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+
+import { useCollectionData } from "react-firebase-hooks/firestore";
+
+firebase.initializeApp({
+    apiKey: "AIzaSyA0nsnP1TYHXh_vChHduDXLVZ00Nx_NfXM",
+    authDomain: "dtdm-2022.firebaseapp.com",
+    projectId: "dtdm-2022",
+    storageBucket: "dtdm-2022.appspot.com",
+    messagingSenderId: "375618910492",
+    appId: "1:375618910492:web:5c5f3359f86aa1950322d9"
+})
+
+const firestore = firebase.firestore();
 
 const headerNav = [
     {
@@ -29,6 +46,17 @@ const Header = () => {
     const navRef = useRef(null);
     const selectRef = useRef(null);
     const [keyword, setKeyword] = useState('');
+    const [modalBoo, setmodalBoo] = useState(true);
+    const [modalText, setmodalText] = useState("");
+
+    const nameRef = firestore.collection("name");
+    const [nameUser] = useCollectionData(nameRef);
+    useEffect(()=>{
+        if (nameUser != undefined){
+            setmodalText(nameUser[0].nameUser);
+        }
+    },[nameUser])
+    
 
     const active = headerNav.findIndex((element)=> element.path === pathname);
 
@@ -83,6 +111,7 @@ const Header = () => {
     },[foCus]);
     
     return (
+        <>
         <div ref={headerRef} className="header">
             <div className="header__wrap container">
                 <div className="logo">
@@ -124,7 +153,7 @@ const Header = () => {
                         </div>
 
                         <Button className="header_nav__noti header__nav__btn-cirle"><i className="bi bi-bell"></i></Button>
-                        <Button className="header_nav__login">Login</Button>
+                        <Button className="header_nav__login">Hi {modalText}</Button>
                     </div>
                     
                 </div>
@@ -132,6 +161,8 @@ const Header = () => {
                 <a className="openNav" onClick={()=>{openNav()}}><i className="bi bi-list"></i></a>
             </div>
         </div>
+        {modalBoo ? <ModalName setBoo={setmodalBoo} app={firestore}> </ModalName> : ""}
+        </>
     )
 }
 
